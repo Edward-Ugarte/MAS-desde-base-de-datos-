@@ -1,1 +1,164 @@
 
+versión de Gretl 2025b
+Sesión actual: 2025-06-28 00:08
+
+# ===========================
+# 🧮 Estimación de tamaño muestral e IC
+# Basado en datos de ingresos – Métodos A, B y C
+# Versión final optimizada por EL & Copilot
+# ===========================
+? clear
+# 📁 Abrir base de datos
+? open "BdD.gdt"
+
+Leer fichero de datos C:\Users\Junior_2\OneDrive\Documentos\gretl\BdD.gdt
+periodicidad: 1, máx. obs: 500
+rango de observaciones: 1 a 500
+
+Listando 7 variables:
+  0) const         1) index         2) ingresos      3) consumo     
+  4) deuda         5) nmiembros     6) formalidad  
+
+# 📊 Parámetros derivados de la serie "ingresos"
+? scalar sigma2 = var(ingresos)            # Varianza muestral
+Se ha generado el escalar sigma2 = 251214
+? scalar sigma  = sqrt(sigma2)             # Desvío estándar
+Se ha generado el escalar sigma = 501.213
+? scalar media  = mean(ingresos)           # Media muestral
+Se ha generado el escalar media = 2011.15
+? scalar N      = sum(ok(ingresos))        # Total de observaciones válidas
+Se ha generado el escalar N = 500
+? scalar E      = 15                       # Error máximo permitido
+Se ha generado el escalar E = 15
+? scalar Z      = 1.96                     # Z para 95% de confianza
+Se ha generado el escalar Z = 1.96
+# 🔧 Estimación del tamaño muestral por tres métodos
+? scalar n_A1 = (Z^2 * sigma2) / E^2
+Se ha generado el escalar n_A1 = 4289.18
+? scalar n_A  = n_A1 / (1 + n_A1 / N)
+Se ha generado el escalar n_A = 447.799
+? scalar n_B  = (N * Z^2 * sigma2) / (N * E^2 + Z^2 * sigma2)
+Se ha generado el escalar n_B = 447.799
+? scalar n_C  = sigma2 / ((E / Z)^2 + (sigma2 / N))
+Se ha generado el escalar n_C = 447.799
+# 🎯 Redondeo operativo basado en Método A
+? scalar n_final = ceil(n_A)
+Se ha generado el escalar n_final = 448
+# 📌 Resultados de tamaño muestral
+🚀 ==== Estimación del tamaño muestral ====
+📊 Método A (ajustado): 447.799
+📊 Método B: 447.799
+📊 Método C: 447.799
+✅ Tamaño muestral final a usar (redondeado): 448
+# 🧮 Intervalo de confianza usando n_final
+? scalar f      = n_final / N
+Se ha generado el escalar f = 0.896
+? scalar margen = Z * sigma / sqrt(n_final) * sqrt(1 - f)
+Se ha generado el escalar margen = 14.9677
+? scalar inf    = media - margen
+Se ha generado el escalar inf = 1996.18
+? scalar sup    = media + margen
+Se ha generado el escalar sup = 2026.11
+# 🧾 Resultados del intervalo de confianza
+
+📐 Intervalo de confianza al 95% (n = 448):
+   - Media esperada     : 2011.15
+   - Margen de error    : 14.97
+   - Límite inferior    : 1996.18
+   - Límite superior    : 2026.11
+versión de Gretl 2025b
+Sesión actual: 2025-06-28 00:51
+
+# ===========================
+# 🧮 Estimación de tamaño muestral e IC
+# Basado en datos de ingresos – Métodos A, B y C
+# Versión final optimizada por Edward Ugarte
+# ===========================
+? clear
+# 📁 Abrir base de datos
+? open "BdD.gdt"
+
+Leer fichero de datos C:\Users\Junior_2\OneDrive\Documentos\gretl\BdD.gdt
+periodicidad: 1, máx. obs: 500
+rango de observaciones: 1 a 500
+
+Listando 7 variables:
+  0) const         1) index         2) ingresos      3) consumo     
+  4) deuda         5) nmiembros     6) formalidad  
+
+# 📊 Parámetros derivados de la serie "ingresos"
+? scalar sigma2 = var(ingresos)            # Varianza muestral
+Se ha generado el escalar sigma2 = 251214
+? scalar sigma  = sqrt(sigma2)             # Desvío estándar
+Se ha generado el escalar sigma = 501.213
+? scalar media  = mean(ingresos)           # Media muestral
+Se ha generado el escalar media = 2011.15
+? scalar N      = sum(ok(ingresos))        # Total de observaciones válidas
+Se ha generado el escalar N = 500
+? scalar E      = 15                       # Error máximo permitido
+Se ha generado el escalar E = 15
+? scalar Z      = 1.96                     # Z para 95% de confianza
+Se ha generado el escalar Z = 1.96
+# 🔧 Estimación del tamaño muestral por tres métodos
+? scalar n_A1 = (Z^2 * sigma2) / E^2
+Se ha generado el escalar n_A1 = 4289.18
+? scalar n_A  = n_A1 / (1 + n_A1 / N)
+Se ha generado el escalar n_A = 447.799
+? scalar n_B  = (N * Z^2 * sigma2) / (N * E^2 + Z^2 * sigma2)
+Se ha generado el escalar n_B = 447.799
+? scalar n_C  = sigma2 / ((E / Z)^2 + (sigma2 / N))
+Se ha generado el escalar n_C = 447.799
+# 🎯 Redondeo operativo basado en Método A
+? scalar n_final = ceil(n_A)
+Se ha generado el escalar n_final = 448
+# 📌 Resultados de tamaño muestral
+🚀 ==== Estimación del tamaño muestral ====
+📊 Método A (ajustado): 447.799
+📊 Método B: 447.799
+📊 Método C: 447.799
+✅ Tamaño muestral final a usar (redondeado): 448
+# 🧮 Intervalo de confianza usando n_final
+? scalar f      = n_final / N
+Se ha generado el escalar f = 0.896
+? scalar margen = Z * sigma / sqrt(n_final) * sqrt(1 - f)
+Se ha generado el escalar margen = 14.9677
+? scalar inf    = media - margen
+Se ha generado el escalar inf = 1996.18
+? scalar sup    = media + margen
+Se ha generado el escalar sup = 2026.11
+# 🧾 Resultados del intervalo de confianza
+
+📐 Intervalo de confianza al 95% (n = 448):
+   - Media esperada     : 2011.15
+   - Margen de error    : 14.97
+   - Límite inferior    : 1996.18
+   - Límite superior    : 2026.11
+? scalar n_B  = (N * Z^2 * sigma2) / (N * E^2 + Z^2 * sigma2)
+Se ha reemplazado el escalar n_B = 447.799
+? scalar n_C  = sigma2 / ((E / Z)^2 + (sigma2 / N))
+Se ha reemplazado el escalar n_C = 447.799
+# 🎯 Redondeo operativo basado en Método A
+? scalar n_final = ceil(n_A)
+Se ha reemplazado el escalar n_final = 448
+# 📌 Resultados de tamaño muestral
+🚀 ==== Estimación del tamaño muestral ====
+📊 Método A (ajustado): 447.799
+📊 Método B: 447.799
+📊 Método C: 447.799
+✅ Tamaño muestral final a usar (redondeado): 448
+# 🧮 Intervalo de confianza usando n_final
+? scalar f      = n_final / N
+Se ha reemplazado el escalar f = 0.896
+? scalar margen = Z * sigma / sqrt(n_final) * sqrt(1 - f)
+Se ha reemplazado el escalar margen = 14.9677
+? scalar inf    = media - margen
+Se ha reemplazado el escalar inf = 1996.18
+? scalar sup    = media + margen
+Se ha reemplazado el escalar sup = 2026.11
+# 🧾 Resultados del intervalo de confianza
+
+📐 Intervalo de confianza al 95% (n = 448):
+   - Media esperada     : 2011.15
+   - Margen de error    : 14.97
+   - Límite inferior    : 1996.18
+   - Límite superior    : 2026.11
