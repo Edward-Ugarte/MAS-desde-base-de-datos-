@@ -8,9 +8,9 @@ Sesión actual: 2025-06-28 00:53
 # ===========================
 ? clear
 # 📁 Abrir base de datos
-? open "BdD.gdt"
+? 
 
-Leer fichero de datos C:\Users\Junior_2\OneDrive\Documentos\gretl\BdD.gdt
+Leer fichero de datos C:\Users\User\Documentos\gretl\
 periodicidad: 1, máx. obs: 500
 rango de observaciones: 1 a 500
 
@@ -52,41 +52,12 @@ Se ha generado el escalar n_final = 448
 # 🧮 Intervalo de confianza usando n_final
 ? scalar f      = 
 Se ha generado el escalar f = 0.896
-? scalar margen =
+? margen =
 Se ha generado el escalar margen = 14.9677
 ? scalar inf    = media - margen
 Se ha generado el escalar inf = 1996.18
 ? scalar sup    = media + margen
 Se ha generado el escalar sup = 2026.11
-# 🧾 Resultados del intervalo de confianza
-
-📐 Intervalo de confianza al 95% (n = 448):
-   - Media esperada     : 2011.15
-   - Margen de error    : 14.97
-   - Límite inferior    : 1996.18
-   - Límite superior    : 2026.11
-? 
-Se ha reemplazado el escalar n_B = 447.799
-? 
-Se ha reemplazado el escalar n_C = 447.799
-# 🎯 Redondeo operativo basado en Método A
-? 
-Se ha reemplazado el escalar n_final = 448
-# 📌 Resultados de tamaño muestral
-🚀 ==== Estimación del tamaño muestral ====
-📊 Método A (ajustado): 447.799
-📊 Método B: 447.799
-📊 Método C: 447.799
-✅ Tamaño muestral final a usar (redondeado): 448
-# 🧮 Intervalo de confianza usando n_final
-? scalar f      = 
-Se ha reemplazado el escalar f = 0.896
-? scalar margen = 
-Se ha reemplazado el escalar margen = 14.9677
-? scalar inf    = 
-Se ha reemplazado el escalar inf = 
-? scalar sup    = 
-Se ha reemplazado el escalar sup = 2026.11
 # 🧾 Resultados del intervalo de confianza
 
 📐 Intervalo de confianza al 95% (n = 448):
