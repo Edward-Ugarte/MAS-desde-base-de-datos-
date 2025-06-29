@@ -51,7 +51,8 @@ Comparar tres métodos de estimación de tamaño muestral (A, B, y C) y aplicar 
 Para cambiar la variable de interés (por ejemplo, de `ingresos` a `consumo`), reemplaza todas las ocurrencias de `ingresos` en el script. También puedes ajustar:
 las formulas se pueden cambiar
 - El margen de error `E`
-- El nivel de confianza así como cualquier parámetros o estadístico dependiendo de la formula a emplear así mismo se puede modificar las fórmulas ya sea censo o encuesta (modificando `Z`)
+- El nivel de confianza así como cualquier parámetros o estadístico dependiendo si es poblacional o muéstral  así mismo se puede utilizar las distintas fórmulas las cuales esta en otro repositorio ya sea censo o encuesta
+- (modificando `Z`)
 
 ## Autoría
 
